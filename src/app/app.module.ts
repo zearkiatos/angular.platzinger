@@ -8,7 +8,10 @@ import { HomeComponent } from './home/home.component';
 import { ConversationComponent } from './conversation/conversation.component';
 import { ProfileComponent } from './profile/profile.component';
 import { Routes, RouterModule } from '@angular/router';
+<<<<<<< HEAD
 import { MenuComponent } from './menu/menu.component';
+=======
+>>>>>>> feature/ftrBasicNavigation
 const appRoutes: Routes = [
   {
     path: '', component: HomeComponent
