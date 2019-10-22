@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
       subnick: 'Pedro',
       age:60,
       email:'pedro@outlook.com',
-      friend: true,
+      friend: false,
       uid:1
     };
 
@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
       subnick: 'Yessenia',
       age:33,
       email:'Yessenia@outlook.com',
-      friend: true,
+      friend: false,
       uid:1
     };
 
@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit {
       subnick: 'Diana',
       age:12,
       email:'diana@outlook.com',
-      friend: true,
+      friend: false,
       uid:1
     };
 
