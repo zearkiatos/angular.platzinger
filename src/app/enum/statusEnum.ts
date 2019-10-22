@@ -1,5 +1,5 @@
 export enum Status{
-    Online = 'oneline',
+    Online = 'online',
     Offline = 'offline',
     Busy = 'busy',
     Away = 'away'
