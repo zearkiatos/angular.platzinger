@@ -20,7 +20,7 @@ const appRoutes: Routes = [
     path: 'login', component: LoginComponent
   },
   {
-    path: 'conversation', component: ConversationComponent
+    path: 'conversation/:uid', component: ConversationComponent
   },
   {
     path: 'profile', component: ProfileComponent

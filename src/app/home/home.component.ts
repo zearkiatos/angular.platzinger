@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
       age:30,
       email:'roberto@outlook.com',
       friend: true,
-      uid:1
+      uid:2
     };
 
     let user3:IUser = {
@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
       age:33,
       email:'Yessenia@outlook.com',
       friend: false,
-      uid:1
+      uid:3
     };
 
     let user4:IUser = {
@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit {
       age:30,
       email:'maria@outlook.com',
       friend: true,
-      uid:1
+      uid:4
     };
 
     let user5:IUser = {
@@ -61,7 +61,7 @@ export class HomeComponent implements OnInit {
       age:12,
       email:'diana@outlook.com',
       friend: false,
-      uid:1
+      uid:5
     };
 
 
