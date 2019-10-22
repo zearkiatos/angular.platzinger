@@ -1,3 +1,4 @@
+import {Status} from '../enum/statusEnum'
 export interface IUser {
     nick:string;
     subnick:string;
@@ -5,4 +6,5 @@ export interface IUser {
     email:string;
     friend:boolean;
     uid:any;
+    status?:Status
 }
