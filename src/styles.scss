@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import "variables";
 #main-logo {
   width: 60px;
 }
@@ -58,4 +59,24 @@
   border-radius:10px;
   border:1px solid white;
   display:inline-block;
+}
+
+.center {
+    text-align:center !important;
+}
+
+.margin-top-15{
+    margin-top:15px;
+}
+
+.margin-bottom-15{
+    margin-top:15px;
+}
+
+.linker{
+    text-decoration: underline !important;
+    font-weight: bold;
+    cursor:pointer;
+    color:$defaultColor;
+
 }

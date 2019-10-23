@@ -56,3 +56,18 @@
   border: 1px solid white;
   display: inline-block;
 }
+.center {
+  text-align: center !important;
+}
+.margin-top-15 {
+  margin-top: 15px;
+}
+.margin-bottom-15 {
+  margin-top: 15px;
+}
+.linker {
+  text-decoration: underline !important;
+  font-weight: bold;
+  cursor: pointer;
+  color: #0069d9;
+}
