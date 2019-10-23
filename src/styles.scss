@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "variables";
 #main-logo {
-  width: 60px;
+  width: 40px;
 }
 
 .icon-status {
@@ -79,4 +79,8 @@
     cursor:pointer;
     color:$defaultColor;
 
+}
+
+.generalContent {
+  margin-top:56px;
 }
