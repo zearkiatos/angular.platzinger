@@ -17,15 +17,15 @@
   top: 0px;
   border-top: 1px solid white;
 }
-.branding {
-  padding: 5px !important;
-  border-top: none !important;
-  border-rignt: none !important;
-}
 #menuContainer > .item {
   padding: 15px;
   color: white;
   cursor: default;
   border: 1px solid white;
   display: inline-block;
+}
+.branding {
+  padding: 5px !important;
+  border-top: none !important;
+  border-rignt: none !important;
 }
