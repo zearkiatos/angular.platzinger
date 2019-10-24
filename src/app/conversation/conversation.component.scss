@@ -1,0 +1,72 @@
+$bubbleShadow:0px 10px 10px 0px rgba(0,0,0,0.5);
+#conversationContainer {
+    background-image: url(../../assets/img/msnbg.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+
+  .text-nick{
+      font-weight: bold;
+      font-size:16pt;
+  }
+
+.chatContainer{
+    height:400px;
+    overflow: auto;
+    .containerFriend{
+        padding:0.2em 1em;
+        max-width:90%;
+        background-color:white;
+        border-radius:5px;
+        margin-bottom:0.5em;
+        box-shadow:$bubbleShadow;
+        .message{
+            padding-bottom:1em;
+        }
+    }
+    .containerYou{
+        padding:0.2em 1em;
+        max-width:90%;
+        background-color:#dcf8c6;
+        border-radius:5px;
+        margin-bottom:0.5em;
+        margin-left:auto;
+        box-shadow:$bubbleShadow;
+        .message{
+            padding-bottom:1em;
+        }
+    }
+  }
+
+  .toolbar{
+    background: rgba(255,255,255,1);
+    background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(47%, rgba(246,246,246,1)), color-stop(100%, rgba(237,237,237,1)));
+    background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+    background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+    background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=0 );
+    padding:0.5em 1em;
+  }
+
+  .chatEdit{
+      height:200px;
+  }
+
+  .item-tools{
+      display:inline-block;
+      margin-left:0.2em;
+      img.icons{
+          width:16px;
+      }
+      img.zumbido{
+        width:32px;
+    }
+      i{
+          margin-left:0.2em;
+      }
+      label.custom-file-upload{
+          color:#000000;
+      }
+  }
