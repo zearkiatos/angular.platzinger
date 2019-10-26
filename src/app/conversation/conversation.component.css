@@ -1,0 +1,78 @@
+#conversationContainer {
+  background-image: url(../../assets/img/msnbg.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.text-nick {
+  font-weight: bold;
+  font-size: 16pt;
+}
+.chatContainer {
+  height: 400px;
+  overflow: auto;
+}
+.chatContainer .containerFriend {
+  padding: 0.2em 1em;
+  max-width: 90%;
+  background-color: white;
+  border-radius: 5px;
+  margin-bottom: 0.5em;
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.5);
+}
+.chatContainer .containerFriend .message {
+  padding-bottom: 1em;
+}
+.chatContainer .containerFriend .chat-footer {
+  text-align: right;
+}
+.chatContainer .containerYou {
+  padding: 0.2em 1em;
+  max-width: 90%;
+  background-color: #dcf8c6;
+  border-radius: 5px;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.5);
+}
+.chatContainer .containerYou .message {
+  padding-bottom: 1em;
+}
+.chatContainer .containerYou .chat-footer {
+  text-align: right;
+}
+.toolbar {
+  background: #fff;
+  background: -moz-linear-gradient(top, #fff 0%, #f6f6f6 47%, #ededed 100%);
+  background: -webkit-gradient(
+    left top,
+    left bottom,
+    color-stop(0%, #fff),
+    color-stop(47%, #f6f6f6),
+    color-stop(100%, #ededed)
+  );
+  background: -webkit-linear-gradient(top, #fff 0%, #f6f6f6 47%, #ededed 100%);
+  background: -o-linear-gradient(top, #fff 0%, #f6f6f6 47%, #ededed 100%);
+  background: -ms-linear-gradient(top, #fff 0%, #f6f6f6 47%, #ededed 100%);
+  background: linear-gradient(to bottom, #fff 0%, #f6f6f6 47%, #ededed 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=0 );
+  padding: 0.5em 1em;
+}
+.chatEdit {
+  height: 200px;
+}
+.item-tools {
+  display: inline-block;
+  margin-left: 0.2em;
+}
+.item-tools img.icons {
+  width: 16px;
+}
+.item-tools img.zumbido {
+  width: 32px;
+}
+.item-tools i {
+  margin-left: 0.2em;
+}
+.item-tools label.custom-file-upload {
+  color: #000000;
+}

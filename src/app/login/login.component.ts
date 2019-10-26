@@ -3,10 +3,10 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.sass']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  public operation:string="login";
   constructor() { }
 
   ngOnInit() {
