@@ -10,6 +10,6 @@ export class AppComponent {
   title = 'platzinger';
 
   constructor(public router: Router) {
-
+    
   }
 }
