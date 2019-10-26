@@ -15,13 +15,14 @@
                 <p *ngIf="operation=='register'">¿Ya tienes cuenta? Has <a class="linker" (click)="operation='login'">Login</a></p>
                 <p *ngIf="operation=='login'">¿No Tienes cuenta? <a class="linker" (click)="operation='register'">Registrarse</a></p>
                 <div class="borderedContainer">
-                    <input class="form-control margin-bottom-15" type="email" placeholder="Ingrese Email">
-                    <input class="form-control margin-bottom-15" type="password" placeholder="Ingrese Contraseña">
+                    <input class="form-control margin-bottom-15" [(ngModel)]="model.email" type="email" placeholder="Ingrese Email">
+                    <input class="form-control margin-bottom-15" [(ngModel)]="model.password" type="password" placeholder="Ingrese Contraseña">
                     <input class="form-control margin-bottom-15" *ngIf="operation == 'register'" type="text" placeholder="Ingrese Nick">
                 </div>
                 <div class="center margin-top-15">
-                    <button class="btn btn-primary" *ngIf="operation == 'login'">Iniciar Sesión</button>
-                    <button class="btn btn-primary" *ngIf="operation == 'register'">Registrarme</button>
+                    <button class="btn btn-primary" *ngIf="operation == 'login'" (click)="login()">Iniciar Sesión</button>
+                    <button class="btn btn-facebook " *ngIf="operation == 'login'" (click)="loginWithFacebook()">Iniciar con Facebook</button>
+                    <button class="btn btn-primary" *ngIf="operation == 'register'" (click)="register()">Registrarme</button>
                 </div>
             </div>
         </div>
