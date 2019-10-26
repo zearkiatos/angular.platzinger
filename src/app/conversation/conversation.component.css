@@ -22,6 +22,9 @@
 .chatContainer .containerFriend .message {
   padding-bottom: 1em;
 }
+.chatContainer .containerFriend .chat-footer {
+  text-align: right;
+}
 .chatContainer .containerYou {
   padding: 0.2em 1em;
   max-width: 90%;
@@ -33,6 +36,9 @@
 }
 .chatContainer .containerYou .message {
   padding-bottom: 1em;
+}
+.chatContainer .containerYou .chat-footer {
+  text-align: right;
 }
 .toolbar {
   background: #fff;

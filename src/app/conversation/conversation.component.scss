@@ -23,6 +23,9 @@ $bubbleShadow:0px 10px 10px 0px rgba(0,0,0,0.5);
         .message{
             padding-bottom:1em;
         }
+        .chat-footer{
+            text-align:right;
+        }
     }
     .containerYou{
         padding:0.2em 1em;
@@ -34,6 +37,9 @@ $bubbleShadow:0px 10px 10px 0px rgba(0,0,0,0.5);
         box-shadow:$bubbleShadow;
         .message{
             padding-bottom:1em;
+        }
+        .chat-footer{
+            text-align:right;
         }
     }
   }
