@@ -8,12 +8,12 @@
                     </div>
                 </div>
                 <div class="col">
-                    <b>Pedro</b>
+                    <b>{{model.user.nick}}</b>
                     <div>
-                        <span>Online</span>
+                        <span>{{model.user.status}}</span>
                         <br />
                         <span>
-                            < Escribe un mensaje personal>
+                            {{model.user.subnick}}
                         </span> <br />
                         <a (click)="logOut()">Logout</a>
                     </div>

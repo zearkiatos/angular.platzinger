@@ -16,10 +16,21 @@ export class HomeComponent implements OnInit {
   public query:string='';
   public model= {
     username:"",
-    password:""
+    password:"",
+    user:{}
   }
   constructor(private userService:UserService, private authenticationService:AuthenticationService, private router:Router, private githubService:GithubService) {
-
+    this.authenticationService.getStatus().subscribe((status)=>{
+      this.userService.getUserById(status.uid).valueChanges().subscribe((data:IUser)=>{
+        this.model.user = data;
+        console.log(this.model.user);
+      },(error)=>{
+        console.log(error);
+      });
+    },(error)=>{
+      console.log(error);
+    });
+    
     this.userService.getUsers().valueChanges().subscribe((data:IUser[])=>{
       this.friends = data;
     },
