@@ -17,12 +17,14 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
+import { AuthenticationGuard } from './guards/authentication.guard';
+import {HttpClientModule} from '@angular/common/http';
 const appRoutes: Routes = [
   {
     path: '', component: HomeComponent
   },
   {
-    path: 'home', component: HomeComponent
+    path: 'home', component: HomeComponent, canActivate:[AuthenticationGuard]
   },
   {
     path: 'login', component: LoginComponent
@@ -49,6 +51,7 @@ const appRoutes: Routes = [
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,

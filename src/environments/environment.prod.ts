@@ -8,5 +8,9 @@ export const environment = {
     storageBucket: "angular-platzinger.appspot.com",
     messagingSenderId: "813882487917",
     appId: "1:813882487917:web:8a35be7b0d0abcdec6fb64"
+  },
+  gitHub:{
+    endpoint: "https://api.github.com/",
+    token:""
   }
 };
