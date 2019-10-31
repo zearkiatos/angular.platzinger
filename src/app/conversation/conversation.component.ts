@@ -11,20 +11,19 @@ import { UserService } from '../services/user.service';
 export class ConversationComponent implements OnInit {
   public friendId: any;
 
-  public friends: IUser[];
-
   public friend: IUser;
 
-  price: number = 78.12314235234545;
-
-  today:any = Date.now();
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService) {
     this.friendId = this.activatedRoute.snapshot.params['uid'];
     console.log(this.friendId);
-    this.friends = this.userService.getFriends();
-    this.friend = this.friends.find((record) => {
-      return record.uid == this.friendId;
+
+    this.userService.getUserById(this.friendId).valueChanges().subscribe((data: IUser) => {
+      console.log(data);
+      this.friend = data;
+    }, (error) => {
+      console.log(error);
     });
+
 
     console.log(this.friend);
   }

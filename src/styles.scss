@@ -143,3 +143,12 @@ input[type="file"]{
 textarea{
   resize: none;
 }
+
+.btn-facebook{
+  display:block;
+  margin:0 auto;
+  margin-top:1em;
+  color:white !important;
+  background-color:$bgFacebookColor;
+  font-family:Roboto, Helvetica, Arial, sans-serif;
+}
