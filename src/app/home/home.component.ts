@@ -14,23 +14,23 @@ export class HomeComponent implements OnInit {
 
   public friends:IUser[];
   public query:string='';
-  public model= {
+  public model:any= {
     username:"",
     password:"",
-    user:{}
   }
+  public user:IUser;
   constructor(private userService:UserService, private authenticationService:AuthenticationService, private router:Router, private githubService:GithubService) {
     this.authenticationService.getStatus().subscribe((status)=>{
       this.userService.getUserById(status.uid).valueChanges().subscribe((data:IUser)=>{
-        this.model.user = data;
-        console.log(this.model.user);
+        this.user = data;
+        console.log(this.user);
       },(error)=>{
         console.log(error);
       });
     },(error)=>{
       console.log(error);
     });
-    
+
     this.userService.getUsers().valueChanges().subscribe((data:IUser[])=>{
       this.friends = data;
     },
