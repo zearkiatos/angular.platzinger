@@ -7,5 +7,6 @@ export interface IUser {
     email:string;
     friend?:boolean;
     uid:any;
-    status?:Status
+    status?:Status,
+    avatar?:string
 }
