@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="avatarFrameOnline">
-                    <img [src]="croppedImage"  class="avatarImage img-fluid" alt="Imagen de Perfil">
+                    <img [src]="croppedImage || user.avatar || 'assets/img/generic_avatar.png'"  class="avatarImage img-fluid" alt="Imagen de Perfil">
                 </div>
                 <hr />
                 <div>
