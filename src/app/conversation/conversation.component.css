@@ -3,10 +3,12 @@
   background-size: 100%;
   background-repeat: no-repeat;
 }
+
 .text-nick {
   font-weight: bold;
   font-size: 16pt;
 }
+
 .chatContainer {
   height: 400px;
   overflow: auto;
@@ -40,26 +42,23 @@
 .chatContainer .containerYou .chat-footer {
   text-align: right;
 }
+
 .toolbar {
-  background: #fff;
-  background: -moz-linear-gradient(top, #fff 0%, #f6f6f6 47%, #ededed 100%);
-  background: -webkit-gradient(
-    left top,
-    left bottom,
-    color-stop(0%, #fff),
-    color-stop(47%, #f6f6f6),
-    color-stop(100%, #ededed)
-  );
-  background: -webkit-linear-gradient(top, #fff 0%, #f6f6f6 47%, #ededed 100%);
-  background: -o-linear-gradient(top, #fff 0%, #f6f6f6 47%, #ededed 100%);
-  background: -ms-linear-gradient(top, #fff 0%, #f6f6f6 47%, #ededed 100%);
-  background: linear-gradient(to bottom, #fff 0%, #f6f6f6 47%, #ededed 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=0 );
+  background: white;
+  background: -moz-linear-gradient(top, white 0%, #f6f6f6 47%, #ededed 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, white), color-stop(47%, #f6f6f6), color-stop(100%, #ededed));
+  background: -webkit-linear-gradient(top, white 0%, #f6f6f6 47%, #ededed 100%);
+  background: -o-linear-gradient(top, white 0%, #f6f6f6 47%, #ededed 100%);
+  background: -ms-linear-gradient(top, white 0%, #f6f6f6 47%, #ededed 100%);
+  background: linear-gradient(to bottom, white 0%, #f6f6f6 47%, #ededed 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#ffffff", endColorstr="#ededed", GradientType=0 );
   padding: 0.5em 1em;
 }
+
 .chatEdit {
   height: 200px;
 }
+
 .item-tools {
   display: inline-block;
   margin-left: 0.2em;
@@ -76,7 +75,10 @@
 .item-tools label.custom-file-upload {
   color: #000000;
 }
+
 .btn-send {
   margin-top: -8px;
   align-content: flex-end;
 }
+
+/*# sourceMappingURL=conversation.component.css.map */
