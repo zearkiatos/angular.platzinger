@@ -5,6 +5,8 @@ import { UserService } from '../services/user.service';
 import { ConversationService } from '../services/conversation.service';
 import { AuthenticationService } from '../services/authentication.service';
 import { MessageType } from '../enum/messageTypeEnum';
+import { ImageCroppedEvent } from 'ngx-image-cropper';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-conversation',
@@ -26,7 +28,13 @@ export class ConversationComponent implements OnInit {
 
   public shake:boolean = false;
 
-  constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private conversationService:ConversationService, private authenticationService:AuthenticationService) {
+  public imageChangedEvent: any = '';
+  public croppedImage: any = '';
+  public picture:any;
+  public showCropper:boolean = true;
+  public showSendImage:boolean = false;
+
+  constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private conversationService:ConversationService, private authenticationService:AuthenticationService, private firebaseStorage: AngularFireStorage) {
     this.friendId = this.activatedRoute.snapshot.params['uid'];
     console.log(this.friendId);
 
@@ -65,6 +73,27 @@ export class ConversationComponent implements OnInit {
     });
   }
 
+  sendImage(p, conversationId){
+    this.showCropper = true;
+    this.showSendImage = false;
+    const message = {
+      uid:conversationId,
+      timestamp: Date.now(),
+      text: null,
+      urlImage:p,
+      sender: this.user.uid,
+      receiver: this.friend.uid,
+      type: MessageType.Image
+    };
+    this.conversationService.sendImage(p, conversationId).then(()=>{
+          this.conversationService.createConversation(message).then(()=>{
+          });
+    }).catch((error)=>{
+      alert("Hubo un error al tratar de subir la imagen.");
+      console.log(error);
+    });
+  }
+
   sendZumbido(){
     const message = {
       uid:this.conversationId,
@@ -88,6 +117,31 @@ export class ConversationComponent implements OnInit {
     window.setTimeout(()=>{
       this.shake = false;
     }, 1000);
+  }
+
+  saveSettings() {
+    if (this.croppedImage) {
+      const currentPictureId = Date.now();
+      const pictures = this.firebaseStorage.ref('pictures/'+currentPictureId+'.jpg').putString(this.croppedImage,'data_url');
+
+      pictures.then((data)=>{
+        this.picture = this.firebaseStorage.ref("pictures/"+currentPictureId+'.jpg').getDownloadURL();
+        this.picture.subscribe((p)=>{
+         this.sendImage(p,this.conversationId);
+        });
+      }).catch((error)=>{
+        console.log(error);
+      });
+    }
+    else {
+      this.userService.editUser(this.user).then(() => {
+        alert("Cambios Guardados");
+      }).catch((error) => {
+        alert("Hubo un error");
+        console.log(error);
+      });
+    }
+
   }
 
 
@@ -123,6 +177,26 @@ export class ConversationComponent implements OnInit {
       return this.user.nick;
     }
   }
+
+  fileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+  }
+  imageCropped(event: ImageCroppedEvent) {
+    console.log("Cup");
+    this.showCropper = true;
+    this.showSendImage = true;
+    this.croppedImage = event.base64;
+  }
+  imageLoaded() {
+    // show cropper
+  }
+  cropperReady() {
+
+  }
+  loadImageFailed() {
+    // show message
+  }
+
 
   
 

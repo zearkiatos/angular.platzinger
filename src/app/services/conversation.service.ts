@@ -21,4 +21,8 @@ export class ConversationService {
   editConversation(conversation:any){
     return this.angularFireDatabase.object('conversations/'+conversation.uid+'/'+conversation.timestamp).set(conversation);
   }
+
+  sendImage(image:string,conversationId:string){
+    return this.angularFireDatabase.object('/conversations/'+conversationId+'/image').set(image);
+  }
 }

@@ -26,9 +26,10 @@
                                     {{getUserNickById(conversation.sender)}} dice:
                                 </h6>
                                 <hr />
-                                <p class="message">
+                                <p class="message" *ngIf="conversation.type== 'text'">
                                     {{conversation.text}}
                                 </p>
+                                <img *ngIf="conversation.type == 'image'" [src]="conversation.urlImage"  class="avatarImage img-fluid" alt="Imagen{{conversation.conversationId}}">
                                 <hr />
                                 <div class="chat-footer">
                                     <small>Enviado: {{conversation.timestamp | date:'hh:mm'}}</small>
@@ -97,8 +98,14 @@
             <div class="col-md-9">
                 <div class="container">
                     <div class="row">
+                        <image-cropper [imageChangedEvent]="imageChangedEvent"
+                            [maintainAspectRatio]="true" [aspectRatio]="1 / 1" [resizeToWidth]="128" format="png"
+                            (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+                            (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+                        </image-cropper>
                         <div class="col margin-top-15">
-                            <textarea class="form-control chatEdit" [(ngModel)]="textMessage" (keyup.enter)="sendMessage()" name="" id="" cols="30" rows="10"></textarea>
+                            <textarea class="form-control chatEdit" [(ngModel)]="textMessage"
+                                (keyup.enter)="sendMessage()" name="" id="" cols="30" rows="10"></textarea>
                         </div>
                     </div>
                     <div class="toolbar">
@@ -115,10 +122,15 @@
                         </div>
                         <div class="item-tools">
                             <label class="btn btn-primary custom-file-upload">
-                                <input type="file" />
+                                <input type="file" (change)="fileChangeEvent($event)" />
                                 <i class="far fa-image"></i>
                                 Seleccionar Imagen
                             </label>
+                        </div>
+                        <div class="item-tools">
+                            <button *ngIf="showSendImage" (click)="saveSettings()" type="button" class="btn btn-primary btn-send">
+                                Enviar Imagen
+                            </button>
                         </div>
                     </div>
                 </div>

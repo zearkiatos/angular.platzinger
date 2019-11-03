@@ -1,4 +1,5 @@
 export enum MessageType{
     Text = 'text',
-    Zumbido = 'zumbido'
+    Zumbido = 'zumbido',
+    Image = 'image'
 }
