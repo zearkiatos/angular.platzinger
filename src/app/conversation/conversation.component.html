@@ -21,20 +21,20 @@
                     <hr />
                     <div class="row">
                         <div class="col chatContainer">
-                            <div class="containerFriend">
+                            <div class="containerFriend" *ngFor="let conversation of conversations">
                                 <h6>
-                                    {{friend.nick}} dice:
+                                    {{getUserNickById(conversation.sender)}} dice:
                                 </h6>
                                 <hr />
                                 <p class="message">
-                                    Lorem Ipsum
+                                    {{conversation.text}}
                                 </p>
                                 <hr />
                                 <div class="chat-footer">
-                                    <small>Enviado: 9:21 pm</small>
+                                    <small>Enviado: {{conversation.timestamp | date:'hh:mm'}}</small>
                                 </div>
                             </div>
-                            <div class="containerYou">
+                            <!-- <div class="containerYou">
                                 <h6>
                                     Pedro dice:
                                 </h6>
@@ -46,8 +46,8 @@
                                 <div class="chat-footer">
                                     <small>Enviado: 9:30 pm</small>
                                 </div>
-                            </div>
-                            <div class="containerFriend">
+                            </div> -->
+                            <!-- <div class="containerFriend">
                                 <h6>
                                     {{friend.nick}} dice:
                                 </h6>
@@ -62,9 +62,9 @@
                                 <div class="chat-footer">
                                     <small>Enviado: 9:42 pm</small>
                                 </div>
-                            </div>
+                            </div> -->
 
-                            <div class="containerYou">
+                            <!-- <div class="containerYou">
                                 <h6>
                                     Pedro dice:
                                 </h6>
@@ -81,7 +81,7 @@
                                 <div class="chat-footer">
                                     <small>Enviado: 9:50 pm</small>
                                 </div>
-                            </div>
+                            </div> -->
 
                         </div>
                     </div>
