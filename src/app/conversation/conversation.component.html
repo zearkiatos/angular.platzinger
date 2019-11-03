@@ -6,7 +6,7 @@
                     <img src="assets/img/generic_avatar.png" class="avatarImage img-fluid" alt="Imagen de Perfil">
                 </div>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-9" *ngIf="friend">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-auto">
@@ -98,7 +98,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col margin-top-15">
-                            <textarea class="form-control chatEdit" name="" id="" cols="30" rows="10"></textarea>
+                            <textarea class="form-control chatEdit" [(ngModel)]="textMessage" (keyup.enter)="sendMessage()" name="" id="" cols="30" rows="10"></textarea>
                         </div>
                     </div>
                     <div class="toolbar">
