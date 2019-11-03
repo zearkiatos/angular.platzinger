@@ -4,6 +4,7 @@ import { IUser } from '../interfaces/IUser';
 import { UserService } from '../services/user.service';
 import { ConversationService } from '../services/conversation.service';
 import { AuthenticationService } from '../services/authentication.service';
+import { MessageType } from '../enum/messageTypeEnum';
 
 @Component({
   selector: 'app-conversation',
@@ -22,6 +23,8 @@ export class ConversationComponent implements OnInit {
   public textMessage:string;
 
   public conversations:any = [];
+
+  public shake:boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private conversationService:ConversationService, private authenticationService:AuthenticationService) {
     this.friendId = this.activatedRoute.snapshot.params['uid'];
@@ -54,12 +57,40 @@ export class ConversationComponent implements OnInit {
       timestamp: Date.now(),
       text: this.textMessage,
       sender: this.user.uid,
-      receiver: this.friend.uid
+      receiver: this.friend.uid,
+      type: MessageType.Text
     };
     this.conversationService.createConversation(message).then(()=>{
       this.textMessage = '';
     });
   }
+
+  sendZumbido(){
+    const message = {
+      uid:this.conversationId,
+      timestamp: Date.now(),
+      text: null,
+      sender: this.user.uid,
+      receiver: this.friend.uid,
+      type: MessageType.Zumbido
+    };
+    this.conversationService.createConversation(message).then(()=>{
+    });
+
+    this.doZumbido();
+  }
+
+  doZumbido(){
+    const audio = new Audio('assets/sound/zumbido.m4a');
+    audio.play();
+    this.shake = true;
+
+    window.setTimeout(()=>{
+      this.shake = false;
+    }, 1000);
+  }
+
+
 
   getConversations(){
     this.conversationService.getConversation(this.conversationId).valueChanges().subscribe((data)=>{
@@ -68,8 +99,14 @@ export class ConversationComponent implements OnInit {
         if(!message.seen){
           message.seen = true;
           this.conversationService.editConversation(message);
-          const audio = new Audio('assets/sound/new_message.m4a');
-          audio.play();
+          if(message.type == MessageType.Text){
+            const audio = new Audio('assets/sound/new_message.m4a');
+            audio.play();
+          }
+          else if(message.type == MessageType.Zumbido){
+            this.doZumbido();
+          }
+
         }
       });
       console.log(data);

@@ -1,4 +1,4 @@
-<div id="conversationContainer">
+<div id="conversationContainer" [ngClass]="{'shaker':shake}">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
@@ -110,7 +110,7 @@
                             <img class="icons" src="../../assets/img/icons/wink_smile.gif" alt="Iconos" />
                             <i class="fas fa-caret-down"></i>
                         </div>
-                        <div class="item-tools">
+                        <div class="item-tools" (click)="sendZumbido()">
                             <img class="zumbido" src="../../assets/img/zumbido.png" alt="Enviar Zumbido" />
                         </div>
                         <div class="item-tools">
