@@ -1,4 +1,4 @@
-<div id="conversationContainer">
+<div id="conversationContainer" [ngClass]="{'shaker':shake}">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
@@ -6,7 +6,7 @@
                     <img src="assets/img/generic_avatar.png" class="avatarImage img-fluid" alt="Imagen de Perfil">
                 </div>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-9" *ngIf="friend">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-auto">
@@ -21,20 +21,21 @@
                     <hr />
                     <div class="row">
                         <div class="col chatContainer">
-                            <div class="containerFriend">
+                            <div class="containerFriend" *ngFor="let conversation of conversations">
                                 <h6>
-                                    {{friend.nick}} dice:
+                                    {{getUserNickById(conversation.sender)}} dice:
                                 </h6>
                                 <hr />
-                                <p class="message">
-                                    Lorem Ipsum
+                                <p class="message" *ngIf="conversation.type== 'text'">
+                                    {{conversation.text}}
                                 </p>
+                                <img *ngIf="conversation.type == 'image'" [src]="conversation.urlImage"  class="avatarImage img-fluid" alt="Imagen{{conversation.conversationId}}">
                                 <hr />
                                 <div class="chat-footer">
-                                    <small>Enviado: 9:21 pm</small>
+                                    <small>Enviado: {{conversation.timestamp | date:'hh:mm'}}</small>
                                 </div>
                             </div>
-                            <div class="containerYou">
+                            <!-- <div class="containerYou">
                                 <h6>
                                     Pedro dice:
                                 </h6>
@@ -46,8 +47,8 @@
                                 <div class="chat-footer">
                                     <small>Enviado: 9:30 pm</small>
                                 </div>
-                            </div>
-                            <div class="containerFriend">
+                            </div> -->
+                            <!-- <div class="containerFriend">
                                 <h6>
                                     {{friend.nick}} dice:
                                 </h6>
@@ -62,9 +63,9 @@
                                 <div class="chat-footer">
                                     <small>Enviado: 9:42 pm</small>
                                 </div>
-                            </div>
+                            </div> -->
 
-                            <div class="containerYou">
+                            <!-- <div class="containerYou">
                                 <h6>
                                     Pedro dice:
                                 </h6>
@@ -81,7 +82,7 @@
                                 <div class="chat-footer">
                                     <small>Enviado: 9:50 pm</small>
                                 </div>
-                            </div>
+                            </div> -->
 
                         </div>
                     </div>
@@ -97,8 +98,14 @@
             <div class="col-md-9">
                 <div class="container">
                     <div class="row">
+                        <image-cropper [imageChangedEvent]="imageChangedEvent"
+                            [maintainAspectRatio]="true" [aspectRatio]="1 / 1" [resizeToWidth]="128" format="png"
+                            (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+                            (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+                        </image-cropper>
                         <div class="col margin-top-15">
-                            <textarea class="form-control chatEdit" name="" id="" cols="30" rows="10"></textarea>
+                            <textarea class="form-control chatEdit" [(ngModel)]="textMessage"
+                                (keyup.enter)="sendMessage()" name="" id="" cols="30" rows="10"></textarea>
                         </div>
                     </div>
                     <div class="toolbar">
@@ -110,15 +117,20 @@
                             <img class="icons" src="../../assets/img/icons/wink_smile.gif" alt="Iconos" />
                             <i class="fas fa-caret-down"></i>
                         </div>
-                        <div class="item-tools">
+                        <div class="item-tools" (click)="sendZumbido()">
                             <img class="zumbido" src="../../assets/img/zumbido.png" alt="Enviar Zumbido" />
                         </div>
                         <div class="item-tools">
                             <label class="btn btn-primary custom-file-upload">
-                                <input type="file" />
+                                <input type="file" (change)="fileChangeEvent($event)" />
                                 <i class="far fa-image"></i>
                                 Seleccionar Imagen
                             </label>
+                        </div>
+                        <div class="item-tools">
+                            <button *ngIf="showSendImage" (click)="saveSettings()" type="button" class="btn btn-primary btn-send">
+                                Enviar Imagen
+                            </button>
                         </div>
                     </div>
                 </div>
