@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "~8.2.8",
     "@angular/router": "~8.2.8",
     "@fortawesome/fontawesome-free": "5.11.2",
+    "@ng-bootstrap/ng-bootstrap": "5.1.2",
     "bootstrap": "4.3.1",
     "firebase": "7.2.2",
     "ngx-image-cropper": "2.0.2",
