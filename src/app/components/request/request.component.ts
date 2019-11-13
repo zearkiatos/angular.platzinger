@@ -13,17 +13,34 @@ export class RequestComponent extends DialogComponent<PromptModel, any> implemen
   scope: any;
   shouldAdd: string = 'yes';
   currentRequest: any;
+  friendRequest: any;
 
   constructor(public dialogService: DialogService, private userService: UserService, private requestsService: RequestsService) {
     super(dialogService);
+
+  }
+  ngOnInit(){
+    this.userService.getUserById(this.currentRequest.sender).valueChanges().subscribe((data)=>{
+      console.log(data);
+      this.friendRequest = data;
+    },(error)=>{
+      console.log(error);
+    });
   }
 
   accept() {
-    if (this.shouldAdd == 'no') {
+    if (this.shouldAdd == 'yes') {
       this.requestsService.setRequestStatus(this.currentRequest, RequestStatus.Accepted).then((data) => {
         this.userService.addFriend(this.scope.user.uid,this.currentRequest.sender).then((data)=>{
           alert('Solicitud Aceptada con éxito.');
         });
+      }).catch((error) => {
+        console.log(error);
+      });
+    }
+    else if(this.shouldAdd == 'no'){
+      this.requestsService.setRequestStatus(this.currentRequest, RequestStatus.Rejected).then((data) => {
+        console.log(data);
       }).catch((error) => {
         console.log(error);
       });
