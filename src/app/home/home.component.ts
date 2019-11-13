@@ -26,11 +26,14 @@ export class HomeComponent implements OnInit {
 
   public user: IUser;
   constructor(private userService: UserService, private authenticationService: AuthenticationService, private router: Router, private githubService: GithubService, private modalService: NgbModal,
-    private requestService:RequestsService) {
+    private requestService: RequestsService) {
     this.authenticationService.getStatus().subscribe((status) => {
       this.userService.getUserById(status.uid).valueChanges().subscribe((data: IUser) => {
         this.user = data;
-        console.log(this.user);
+        if (this.user.friends) {
+          this.user.friends = Object.values(this.user.friends);
+          console.log(this.user.friends);
+        }
       }, (error) => {
         console.log(error);
       });
@@ -68,7 +71,7 @@ export class HomeComponent implements OnInit {
 
   open(content) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-      
+
     }, (reason) => {
 
     });
@@ -82,9 +85,9 @@ export class HomeComponent implements OnInit {
       status: RequestStatus.Pending
     }
 
-    this.requestService.createRequest(request).then(()=>{
+    this.requestService.createRequest(request).then(() => {
       alert("Solicitud Enviada");
-    }).catch((error)=>{
+    }).catch((error) => {
       alert("Hubo un error");
       console.log(error);
     });
