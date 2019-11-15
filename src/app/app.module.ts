@@ -23,6 +23,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ImageCropperModule} from 'ngx-image-cropper';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
+import { ContactComponent } from './components/contact/contact.component';
 const appRoutes: Routes = [
   {
     path: '', component: HomeComponent
@@ -49,7 +50,8 @@ const appRoutes: Routes = [
     ProfileComponent,
     MenuComponent,
     SearchPipe,
-    RequestComponent
+    RequestComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
