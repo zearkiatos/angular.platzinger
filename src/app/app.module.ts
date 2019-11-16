@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import {RequestComponent} from './components/request/request.component';
 import { ConversationComponent } from './conversation/conversation.component';
 import { ProfileComponent } from './profile/profile.component';
 import { Routes, RouterModule } from '@angular/router';
@@ -20,6 +21,9 @@ import { environment } from 'src/environments/environment';
 import { AuthenticationGuard } from './guards/authentication.guard';
 import {HttpClientModule} from '@angular/common/http';
 import {ImageCropperModule} from 'ngx-image-cropper';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { BootstrapModalModule } from 'ng2-bootstrap-modal';
+import { ContactComponent } from './components/contact/contact.component';
 const appRoutes: Routes = [
   {
     path: '', component: HomeComponent
@@ -45,7 +49,9 @@ const appRoutes: Routes = [
     ConversationComponent,
     ProfileComponent,
     MenuComponent,
-    SearchPipe
+    SearchPipe,
+    RequestComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
@@ -58,9 +64,14 @@ const appRoutes: Routes = [
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     AngularFireDatabaseModule,
-    ImageCropperModule
+    ImageCropperModule,
+    NgbModule,
+    BootstrapModalModule.forRoot({
+      container:document.body
+    })
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[RequestComponent]
 })
 export class AppModule { }

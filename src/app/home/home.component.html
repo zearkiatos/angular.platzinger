@@ -27,18 +27,40 @@
                 <input type="text" class="form-control" placeholder="Buscar Amigo" [(ngModel)]="query">
             </div>
             <div class="col-md-auto">
-                <img src="assets/img/logo_live_add.png" alt="" class="icon">
+                <img src="assets/img/logo_live_add.png" alt="" class="icon" (click)="open(content)">
             </div>
         </div>
         <hr />
-        <b *ngIf="friends">Amigos ({{friends.length}} / {{friends.length}})</b>
-        <div *ngFor="let user of friends | search:query; let i = index" class="display-block margin-bottom-5">
-            <span routerLink="/conversation/{{user.uid}}">
-                <img class="icon-status" src="../../assets/img/logo_live_{{user.status}}.png" />
-                {{user.nick}} - {{user.subnick || 'No Subnick'}}
-                <small>{{user.email}}</small>
-            </span>
-
+        <b *ngIf="user && user.friends">Amigos ({{user.friends.length}} / {{user.friends.length}})</b>
+        <div *ngIf="user && user.friends">
+            <div class="display-block margin-bottom-5">
+                <app-contact class="col-md-12" *ngFor="let user of user.friends | search:query; let i = index"
+                    [uid]="user"></app-contact>
+            </div>
         </div>
     </div>
+    <ng-template #content let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Tienes una Solicitud</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+                <div class="row">
+                    <b>Ingresa el email de tu amigo</b>
+                    <input type="email" class="form-control" placeholder="Email" [(ngModel)]="friendEmail"
+                        (keyup.enter)="sendRequest()" />
+                </div>
+                <div class="row">
+                    <h4>Mensaje</h4>
+                    <textarea class="form-control editor" [(ngModel)]="friendMessage"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="sendRequest()">Guardar</button>
+        </div>
+    </ng-template>
 </div>

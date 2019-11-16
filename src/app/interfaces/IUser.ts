@@ -8,5 +8,6 @@ export interface IUser {
     friend?:boolean;
     uid:any;
     status?:Status,
-    avatar?:string
+    avatar?:string,
+    friends?:any
 }
