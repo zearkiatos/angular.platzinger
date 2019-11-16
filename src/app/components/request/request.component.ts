@@ -7,7 +7,7 @@ import { RequestStatus } from 'src/app/enum/requestStatusEnum';
 @Component({
   selector: 'app-request',
   templateUrl: './request.component.html',
-  styleUrls: ['./request.component.sass']
+  styleUrls: ['./request.component.scss']
 })
 export class RequestComponent extends DialogComponent<PromptModel, any> implements PromptModel {
   scope: any;

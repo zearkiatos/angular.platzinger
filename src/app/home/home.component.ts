@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
     password: "",
   }
   public friendEmail: string = '';
+  public friendMessage:string = '';
 
   public user: IUser;
   constructor(private userService: UserService, private authenticationService: AuthenticationService, private router: Router, private githubService: GithubService, private modalService: NgbModal,
@@ -47,13 +48,11 @@ export class HomeComponent implements OnInit {
       (error) => {
         console.log(error);
       });
-    this.model.username = "zearkiatos";
-    this.model.password = "Zear2123";
-    this.githubService.GetUser(this.model.username).subscribe((data) => {
-      console.log(data);
-    }, (error) => {
-      console.log(error);
-    });
+    // this.githubService.GetUser(this.model.username).subscribe((data) => {
+    //   console.log(data);
+    // }, (error) => {
+    //   console.log(error);
+    // });
 
   }
 
@@ -81,6 +80,7 @@ export class HomeComponent implements OnInit {
     const request = {
       timestamp: Date.now(),
       receiver_email: this.friendEmail,
+      receiver_message:this.friendMessage,
       sender: this.user.uid,
       status: RequestStatus.Pending
     }

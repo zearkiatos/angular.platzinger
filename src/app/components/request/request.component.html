@@ -12,6 +12,14 @@
                 <div class="col-md-9">
                     <b>{{friendRequest.nick}} </b>
                     <small>Te ha enviado esta solicitud</small>
+                    <div *ngIf="currentRequest.receiver_message">
+                        <h6>Mensaje en solicitud</h6>
+                        <p>{{currentRequest.receiver_message}} </p>
+                    </div>
+
+                </div>
+                <div *ngIf="currentRequest.receiver_message" class="col-md-12">
+
                 </div>
                 <hr />
                 <div class="col-md-12">
@@ -24,7 +32,7 @@
                     <input type="radio" name="addToMsn" [(ngModel)]="shouldAdd" value="later" id="add-later">
                     <label for="add-later">Quiero agregar más tarde</label> <br />
                 </div>
-                
+
             </div>
         </div>
         <footer class="modal-footer">

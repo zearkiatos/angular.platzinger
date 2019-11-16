@@ -34,13 +34,8 @@
         <b *ngIf="user && user.friends">Amigos ({{user.friends.length}} / {{user.friends.length}})</b>
         <div *ngIf="user && user.friends">
             <div class="display-block margin-bottom-5">
-                <app-contact class="col-md-12" *ngFor="let user of user.friends | search:query; let i = index" [uid]="user"></app-contact>
-                <!-- <span routerLink="/conversation/{{user.uid}}">
-                            <img class="icon-status" src="../../assets/img/logo_live_{{user.status}}.png" />
-                            {{user.nick}} - {{user.subnick || 'No Subnick'}}
-                            <small>{{user.email}}</small>
-                        </span> -->
-
+                <app-contact class="col-md-12" *ngFor="let user of user.friends | search:query; let i = index"
+                    [uid]="user"></app-contact>
             </div>
         </div>
     </div>
@@ -57,6 +52,10 @@
                     <b>Ingresa el email de tu amigo</b>
                     <input type="email" class="form-control" placeholder="Email" [(ngModel)]="friendEmail"
                         (keyup.enter)="sendRequest()" />
+                </div>
+                <div class="row">
+                    <h4>Mensaje</h4>
+                    <textarea class="form-control editor" [(ngModel)]="friendMessage"></textarea>
                 </div>
             </div>
         </div>
