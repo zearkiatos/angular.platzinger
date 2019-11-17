@@ -1,0 +1,140 @@
+<div id="conversationContainer" [ngClass]="{'shaker':shake}">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="avatarFrameOnline margin-top-15 margin-bottom-15">
+                    <img src="assets/img/generic_avatar.png" class="avatarImage img-fluid" alt="Imagen de Perfil">
+                </div>
+            </div>
+            <div class="col-md-9" *ngIf="friend">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-auto">
+                            <div class="margin-top-15">
+                                <p>
+                                    <span class="text-nick">{{friend.nick}} </span>
+                                    <small>({{friend.status}})</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col chatContainer">
+                            <div class="containerFriend" *ngFor="let conversation of conversations">
+                                <h6>
+                                    {{getUserNickById(conversation.sender)}} dice:
+                                </h6>
+                                <hr />
+                                <p class="message" *ngIf="conversation.type== 'text'">
+                                    {{conversation.text}}
+                                </p>
+                                <img *ngIf="conversation.type == 'image'" [src]="conversation.urlImage"  class="avatarImage img-fluid" alt="Imagen{{conversation.conversationId}}">
+                                <hr />
+                                <div class="chat-footer">
+                                    <small>Enviado: {{conversation.timestamp | date:'hh:mm'}}</small>
+                                </div>
+                            </div>
+                            <!-- <div class="containerYou">
+                                <h6>
+                                    Pedro dice:
+                                </h6>
+                                <hr />
+                                <p class="message">
+                                    Lorem Ipsum
+                                </p>
+                                <hr />
+                                <div class="chat-footer">
+                                    <small>Enviado: 9:30 pm</small>
+                                </div>
+                            </div> -->
+                            <!-- <div class="containerFriend">
+                                <h6>
+                                    {{friend.nick}} dice:
+                                </h6>
+                                <hr />
+                                <p class="message">
+                                    Chuck pig filet mignon beef turkey strip steak. Turducken kielbasa kevin tongue
+                                    corned beef turkey pastrami chicken fatback shank sausage cupim. Pastrami short loin
+                                    drumstick, meatloaf corned beef boudin porchetta. Doner capicola andouille, picanha
+                                    jerky tongue spare ribs ribeye meatloaf bresaola sausage ball tip.
+                                </p>
+                                <hr />
+                                <div class="chat-footer">
+                                    <small>Enviado: 9:42 pm</small>
+                                </div>
+                            </div> -->
+
+                            <!-- <div class="containerYou">
+                                <h6>
+                                    Pedro dice:
+                                </h6>
+                                <hr />
+                                <p class="message">
+                                    Bacon ipsum dolor amet pork loin turducken jowl frankfurter chicken meatball. Spare
+                                    ribs meatloaf ball tip alcatra chuck pork loin, flank capicola bresaola porchetta
+                                    shankle tail venison sausage hamburger. Short ribs spare ribs rump boudin. Tail
+                                    kevin filet mignon jowl, strip steak meatball sirloin prosciutto sausage bacon pork
+                                    biltong. Buffalo venison shank, cow pastrami short ribs ribeye. Turducken filet
+                                    mignon boudin frankfurter alcatra prosciutto buffalo pig bacon brisket ribeye.
+                                </p>
+                                <hr />
+                                <div class="chat-footer">
+                                    <small>Enviado: 9:50 pm</small>
+                                </div>
+                            </div> -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="avatarFrameOnline margin-top-15 margin-bottom-15">
+                    <img src="assets/img/generic_avatar.png" class="avatarImage img-fluid" alt="Imagen de Perfil">
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="container">
+                    <div class="row">
+                        <image-cropper [imageChangedEvent]="imageChangedEvent"
+                            [maintainAspectRatio]="true" [aspectRatio]="1 / 1" [resizeToWidth]="128" format="png"
+                            (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+                            (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+                        </image-cropper>
+                        <div class="col margin-top-15">
+                            <textarea class="form-control chatEdit" [(ngModel)]="textMessage"
+                                (keyup.enter)="sendMessage()" name="" id="" cols="30" rows="10"></textarea>
+                        </div>
+                    </div>
+                    <div class="toolbar">
+                        <div class="item-tools">
+                            <img class="icons" src="../../assets/img/icons/regular_smile.gif" alt="Iconos" />
+                            <i class="fas fa-caret-down"></i>
+                        </div>
+                        <div class="item-tools">
+                            <img class="icons" src="../../assets/img/icons/wink_smile.gif" alt="Iconos" />
+                            <i class="fas fa-caret-down"></i>
+                        </div>
+                        <div class="item-tools" (click)="sendZumbido()">
+                            <img class="zumbido" src="../../assets/img/zumbido.png" alt="Enviar Zumbido" />
+                        </div>
+                        <div class="item-tools">
+                            <label class="btn btn-primary custom-file-upload">
+                                <input type="file" (change)="fileChangeEvent($event)" />
+                                <i class="far fa-image"></i>
+                                Seleccionar Imagen
+                            </label>
+                        </div>
+                        <div class="item-tools">
+                            <button *ngIf="showSendImage" (click)="saveSettings()" type="button" class="btn btn-primary btn-send">
+                                Enviar Imagen
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,193 @@
+/* You can add global styles to this file, and also import other style files */
+@import "variables";
+#main-logo {
+  width: 40px;
+}
+
+.icon-status {
+  width: 32px;
+}
+hr {
+  margin: 1em 0;
+}
+h6 {
+  padding-top: 0.5em;
+}
+
+.avatarFrameOffline {
+  background: rgba(226, 226, 226, 1);
+  background: -moz-linear-gradient(
+    top,
+    rgba(226, 226, 226, 1) 0%,
+    rgba(219, 219, 219, 1) 50%,
+    rgba(209, 209, 209, 1) 51%,
+    rgba(254, 254, 254, 1) 100%
+  );
+  background: -webkit-gradient(
+    left top,
+    left bottom,
+    color-stop(0%, rgba(226, 226, 226, 1)),
+    color-stop(50%, rgba(219, 219, 219, 1)),
+    color-stop(51%, rgba(209, 209, 209, 1)),
+    color-stop(100%, rgba(254, 254, 254, 1))
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgba(226, 226, 226, 1) 0%,
+    rgba(219, 219, 219, 1) 50%,
+    rgba(209, 209, 209, 1) 51%,
+    rgba(254, 254, 254, 1) 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    rgba(226, 226, 226, 1) 0%,
+    rgba(219, 219, 219, 1) 50%,
+    rgba(209, 209, 209, 1) 51%,
+    rgba(254, 254, 254, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    top,
+    rgba(226, 226, 226, 1) 0%,
+    rgba(219, 219, 219, 1) 50%,
+    rgba(209, 209, 209, 1) 51%,
+    rgba(254, 254, 254, 1) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(226, 226, 226, 1) 0%,
+    rgba(219, 219, 219, 1) 50%,
+    rgba(209, 209, 209, 1) 51%,
+    rgba(254, 254, 254, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );
+  text-align: center;
+  padding: 5%;
+  border-radius: 10px;
+  border: 1px solid white;
+  display: inline-block;
+}
+
+.avatarFrameOnline {
+  background: #d2ff6b;
+  background: -moz-linear-gradient(top, #d2ff6b 0%, #81ff3d 50%, #0cff00 51%, #0dbc03 100%);
+  background: -webkit-linear-gradient(top, #d2ff6b 0%, #81ff3d 50%, #0cff00 51%, #0dbc03 100%);
+  background: linear-gradient(to bottom, #d2ff6b 0%, #81ff3d 50%, #0cff00 51%, #0dbc03 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff6b', endColorstr='#0dbc03', GradientType=0 );
+  text-align: center;
+  padding: 5%;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  -webkit-box-shadow: $boxShadowAvatar;
+  -moz-box-shadow: $boxShadowAvatar;
+  box-shadow: $boxShadowAvatar;
+  display: inline-block;
+}
+
+#homeAvatarPicture {
+  max-width: 100px;
+}
+
+.center {
+  text-align: center !important;
+}
+
+.margin-top-15 {
+  margin-top: 15px;
+}
+
+.margin-bottom-15 {
+  margin-bottom: 15px;
+}
+
+.margin-bottom-5 {
+  margin-bottom: 5px;
+}
+
+.linker {
+  text-decoration: underline !important;
+  font-weight: bold;
+  cursor: pointer;
+  color: $defaultColor;
+}
+
+.generalContent {
+  margin-top: 56px;
+}
+
+.display-block {
+  display: block !important;
+}
+
+.padding-top-45 {
+  padding-top: 45px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  background: #f2f6f8;
+  background: -moz-linear-gradient(top, #f2f6f8 0%, #d8e1e7 50%, #b5c6d0 51%, #e0eff9 100%);
+  background: -webkit-linear-gradient(top, #f2f6f8 0%, #d8e1e7 50%, #b5c6d0 51%, #e0eff9 100%);
+  background: linear-gradient(to bottom, #f2f6f8 0%, #d8e1e7 50%, #b5c6d0 51%, #e0eff9 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f6f8', endColorstr='#e0eff9', GradientType=0 );
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  border: 1px solid #8dd2f3;
+}
+
+textarea {
+  resize: none;
+}
+
+.btn-facebook {
+  display: block;
+  margin: 0 auto;
+  margin-top: 1em;
+  color: white !important;
+  background-color: $bgFacebookColor;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+.shaker {
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -1px) rotate(-1deg);
+  }
+}
