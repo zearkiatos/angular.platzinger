@@ -49,3 +49,9 @@ Thumbs.db
 
 *.css
 *.css.map
+
+platzinger-win32-x64
+.firebase/
+.firebaserc
+database.rules.json
+firebase.json
